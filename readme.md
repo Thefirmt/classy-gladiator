@@ -273,17 +273,18 @@ If you win, chance that enemy weapon OR armor will drop. (And pet if pet class)
 
 Recover HP and Stamina
 Every completed Exploration adds a multiplier to rare drop chance of activity as a reward. Multiplier resets and is used on each activity.
-Chance to find bonus hings depending on activity:
-Weapons?
+Chance to find bonus things depending on activity:
+Weapons? first two options
+Armor? second two options
 
 Multiple activities (Maybe 4)
 Hidden bonus to rewards depending on your class. (10% or so?)
 Promotioned classes always get more because they have more to refill.
 
-Hunt Bounty
-Go for a walk
-Read
-People watch
+Hunt                Mercenary, Marksmen
+Go for a walk       Environmentalist, Explorer
+Read                Mage, Merchants
+People watch        Performer, Acrobat
 
 # Stats
 Stamina a number representing the maximum explorations you can attempt before needing to recharge
