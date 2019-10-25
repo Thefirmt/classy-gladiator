@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactModal from 'react-modal'
 // import Background from './background.jsx'
 
 class App extends React.Component {
@@ -8,7 +9,7 @@ class App extends React.Component {
             something: 'here',
             floor: 1,
             bgImage: 0,
-            class: 3 //each class has a number in db
+            class: 3, //each class has a number in db
         }
     }
 
@@ -38,6 +39,9 @@ class App extends React.Component {
         return(
             <div>
                 <div id="main">
+                    <ReactModal isOpen={false}>
+
+                    </ReactModal>
                     <div id="explore-container">
                         <div id="current-floor">
                             THIS IS THE CURRENT FLOOR DIV
