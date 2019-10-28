@@ -1,6 +1,8 @@
-# Classes for Classy GLadiator
+# Classes for Classy Gladiator
 
 // Maid
+// Currency
+// Weapon & Armor Shop
 
 ### Female
 Healer
