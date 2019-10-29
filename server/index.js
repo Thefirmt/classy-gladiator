@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const PORT = 3455;
-const crypto = require('crypto')
-
+const crypto = require('crypto');
+const pool = require('../database/config.js')
 
 var genRandomString = function(length){
     return crypto.randomBytes(Math.ceil(length/2))
@@ -24,9 +24,9 @@ var sha512 = function(password, salt){
 function saltHashPassword(userpassword) {
     var salt = genRandomString(16); /** Gives us salt of length 16 */
     var passwordData = sha512(userpassword, salt);
-    console.log('UserPassword = '+userpassword); //This is the input password from the user.
-    console.log('Passwordhash = '+passwordData.passwordHash); //Store this as the password
-    console.log('nSalt = '+passwordData.salt); //Store this as the salt
+    //console.log('UserPassword = '+userpassword); //This is the input password from the user.
+    //console.log('Passwordhash = '+passwordData.passwordHash); //Store this as the password
+    //console.log('nSalt = '+passwordData.salt); //Store this as the salt
 }
 
 //Get username info from database
@@ -35,10 +35,13 @@ function saltHashPassword(userpassword) {
 //Compare the result to the user saved hashed password, if it matches, log in. -->User = Usernumber, Get all the data for user.
 
 
-saltHashPassword('MYPASSWORD');
-saltHashPassword('MYPASSWORD');
+// saltHashPassword('MYPASSWORD');
+// saltHashPassword('MYPASSWORD');
 
 app.use(express.static('public'))
+
+// const res = await pool.query('SELECT NOW()')
+// await pool.end()
 
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`))

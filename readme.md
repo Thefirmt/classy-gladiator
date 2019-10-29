@@ -3,6 +3,8 @@
 // Maid
 // Currency
 // Weapon & Armor Shop
+// Rogue-like. Permanent Death. Run away from fights.
+// RNG generate weapons. If chosen then insert in database and add to user.
 
 ### Female
 Healer
@@ -30,7 +32,7 @@ Mage
 Environmentalist
 Merchant
 Performer
-Marksmen
+Marksman
 Mercenary
 Acrobat
 
