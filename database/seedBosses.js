@@ -6,6 +6,9 @@ const insertBosses =
     'Icy Black Cat', 20, 20, 20, 20, 20, 20, 20, 20, 20, 4,
     'Hungry Puppy', 30, 30, 30, 30, 30, 30, 30, 30, 30, 5]
 
+module.exports = insertBosses
+
+
 //BOSSES
 
 //Floor 10
@@ -33,4 +36,3 @@ const insertBosses =
 //30
 //Hopefully these base stats are insane.
 
-module.exports = insertBosses

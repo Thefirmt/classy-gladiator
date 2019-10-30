@@ -124,7 +124,7 @@ Entreprenuer
 Collector
 
 Brewer -> Alchemist (explosives poisons) || Apothecary (Medicines)
-Craftsman -> Artificer || Blacksmith  (tinkerer instead of crafter)
+Craftsman -> Artificer (makes runes enchanting) || Blacksmith  (tinkerer instead of crafter)
 Trader -> Collector || Emperor
 
 ### Performer
@@ -176,7 +176,7 @@ Spear tosser
 
 Gunslinger -> Musketeer || Sniper
 Archer -> Vampire Hunter || Bow Knight
-Trainee -> Hooligan || Engineer (Seige Weapons)
+Trainee -> Hooligan || Seige Engineer
 
 ### Mercenary
 
@@ -200,8 +200,8 @@ Highway-man
 Dual Weilder
 
 Chosen -> Swordmage || Paladin
-Swordsman -> Samurai || Knight
-Codemned -> Berserker || Gladiator
+Swordsman -> Samurai || Knight (lance)
+Codemned -> Berserker || Gladiator (net and trident)
 
 ### Acrobat
 
