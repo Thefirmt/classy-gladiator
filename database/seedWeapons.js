@@ -6,18 +6,18 @@ const insertWeapons =
     'Steel Dart', 0, 0, 2, 0, 0, 3,
     'Spatha', 0, 2, 2, 1, 0, 0,
     'Assorted Wares', 0, 1, 1, 1, 1, 1,
-    'Charisma', 0, 2, 0, 1, 2, 0,]
+    'Charisma', 0, 2, 0, 1, 2, 0]
 
-module.export = insertWeapons
+module.exports = insertWeapons
 
 
 //BASE WEAPONS
 
 //Tiers Total Stats
-//0-5
-//0-10
-//5-15
-//5-20
+//0-5    1
+//0-10   2
+//5-15   3
+//5-20   4
 
 // Acrobat
 // name Levitation Wand

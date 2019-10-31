@@ -1,6 +1,7 @@
 const pool = require('./config.js');
 const insertBosses = require('./seedBosses.js')
 const insertWeapons = require('./seedWeapons.js')
+const insertArmor = require('./seedArmor.js')
 
 ;(async () => {
     // note: we don't try/catch this because if connecting throws an exception
@@ -17,9 +18,11 @@ const insertWeapons = require('./seedWeapons.js')
         1, 'Mercenary', 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
         1, 'Merchant', 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
         1, 'Performer', 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
-      await client.query(classesQuery, insertClasses) //insertArmor(Required for boss) //insertWeapons (starters)
-      const weaponsQuery = "INSERT INTO weapons (name, life, mag, phys, spd, crit, eva, acc, mdef, pdef, reward) VALUES ($1, $2, $3, $4, $5, $6, $7)"
+      await client.query(classesQuery, insertClasses)
+      const weaponsQuery = "INSERT INTO weapons (name, tier, mag, phys, spd, crit, acc) VALUES ($1, $2, $3, $4, $5, $6, $7), ($8, $9, $10, $11, $12, $13, $14), ($15, $16, $17, $18, $19, $20, $21), ($22, $23, $24, $25, $26, $27, $28), ($29, $30, $31, $32, $33, $34, $35), ($36, $37, $38, $39, $40, $41, $42), ($43, $44, $45, $46, $47, $48, $49), ($50, $51, $52, $53, $54, $55, $56)"
       await client.query(weaponsQuery, insertWeapons)
+      const armorQuery = "INSERT INTO armors (name, tier, life, mag, phys, spd, crit, eva, acc, mdef, pdef) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11), ($12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22), ($23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33), ($34, $35, $36, $37, $38, $39, $40, $41, $42, $43, $44), ($45, $46, $47, $48, $49, $50, $51, $52, $53, $54, $55)"
+      await client.query(armorQuery, insertArmor)
       const bossesQuery = "INSERT INTO boss (name, life, mag, phys, spd, crit, eva, acc, mdef, pdef, reward) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11), ($12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22), ($23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33), ($34, $35, $36, $37, $38, $39, $40, $41, $42, $43, $44), ($45, $46, $47, $48, $49, $50, $51, $52, $53, $54, $55)"
       await client.query(bossesQuery, insertBosses)
       await client.query('COMMIT')

@@ -63,3 +63,7 @@ body {
     background: darkslategray;
     color: white;
 }
+#warning {
+    color: darkred;
+    font-size: 12px;
+}
