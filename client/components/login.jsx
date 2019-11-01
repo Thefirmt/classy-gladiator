@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import sha512 from '../../server/hashing.js'
 
 const Login = () => {
     return(
@@ -17,9 +18,12 @@ const Login = () => {
                     Password:<br/>
                     <input type="password" id="psw"/><br/>
                     <input type="submit" value="Submit" onClick={(e) => {
-                        axios.get('/login',)
-                        .then(function (response) {
+                        let name = document.getElementById("username").value;
+                        let pass = document.getElementById("psw").value;
+                        axios.get(`/login?user=${name}`)
+                        .then(function (salt) {
                           // handle success
+                          sha512(pass, salt)
                           console.log(response);
                         })
                         .catch(function (error) {

@@ -11,17 +11,17 @@ var sha512 = function(password, salt){
     hash.update(password);
     var value = hash.digest('hex');
     return {
-        salt:salt,
-        passwordHash:value
+        salt: salt,
+        psw: value
     };
 };
 
 function saltHashPassword(userpassword) {
     var salt = genRandomString(16); /** Gives us salt of length 16 */
-    var passwordData = sha512(userpassword, salt);
+    return sha512(userpassword, salt);
     //console.log('UserPassword = '+userpassword); //This is the input password from the user.
     //console.log('Passwordhash = '+passwordData.passwordHash); //Store this as the password
     //console.log('nSalt = '+passwordData.salt); //Store this as the salt
 }
 
-module.exports = { genRandomString, sha512, saltHashPassword};
+module.exports = { genRandomString, sha512, saltHashPassword };
