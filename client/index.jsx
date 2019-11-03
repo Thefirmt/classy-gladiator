@@ -28,11 +28,6 @@ reactDOM.render(
                         <ReactModal isOpen={true} ariaHideApp={false}>
                             <Register />
                             <Link to={`/`}>Return to Login</Link>
-                            <p id="warning">WARNING THIS GAME DOES NOT RUN ON HTTPS!<br/>
-                            WHILE STEPS HAVE BEEN TAKEN TO ENSURE TO SAFETY OF YOUR PASSWORD<br/>
-                            NOTHING CAN STOP A DETERMINED HACKER ON HTTP.<br/>
-                            FOR YOUR SAFETY <b>PLEASE USE A UNIQUE PASSWORD WITH THIS GAME.</b>
-                            </p>
                         </ReactModal>
                     </div>
                 )} />
