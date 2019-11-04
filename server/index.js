@@ -11,8 +11,22 @@ app.get('/login', (req, res) => {
     let username = [req.query.user]
     let text = "SELECT * FROM users WHERE name = $1"
     pool.query(text, username)
-    .then(function (res) {
-        res.send(res.rows[0].salt)
+    .then(function (data) {
+        res.send(data.rows[0].salt)
+    })
+    .catch(e => console.log(e.stack))
+})
+
+app.get('/loginconfirm', (req, res) => {
+    let psw = [req.query.info.psw]
+    let salt = [req.query.info.salt]
+    let username = [req.query.info.user]
+    console.log(username)
+    let text = "SELECT * FROM users WHERE name = $1"
+    pool.query(text, username)
+    .then(function (data2) {
+        console.log(data2)
+        // res.send(res.rows[0].salt)
     })
     .catch(e => console.log(e.stack))
 })

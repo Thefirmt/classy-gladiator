@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import sha512 from '../../server/hashing.js'
+import { sha512 } from '../../server/hashing.js'
 
 const Login = () => {
     return(
@@ -23,8 +23,9 @@ const Login = () => {
                         axios.get(`/login?user=${name}`)
                         .then(function (salt) {
                           // handle success
-                          sha512(pass, salt)
-                          console.log(response);
+                          let hashed = sha512(pass, salt)
+                          hashed.user = name;
+                          axios.get(`/loginconfirm?info=${hashed}`)
                         })
                         .catch(function (error) {
                           // handle error
