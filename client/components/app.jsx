@@ -1,16 +1,21 @@
 import React from 'react'
 import ReactModal from 'react-modal'
+import Class from './classesSelect.jsx'
 // import Background from './background.jsx'
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            something: 'here',
-            floor: 1,
+            name : 'Shazobrand the Mighty',
+            armor : null,
+            class : null,
+            room : 1,
+            weapon : null,
             bgImage: 0,
-            class: 3, //each class has a number in db
         }
+
+        this.handleClassSelect = this.handleClassSelect.bind(this)
     }
 
     //intial backgorund changing idea. Call this function after every floor to check for new background.
@@ -30,21 +35,42 @@ class App extends React.Component {
         document.getElementById("background").style.background= color
     }
 
+
+    //SET UNMOUNT or selected classes will always be overwritten on state updates.
     componentDidMount() {
-        this.changeBg();
+        // this.changeBg();
+        this.setState({
+            name : this.props.location.state.user.name,
+            armor : this.props.location.state.user.armor,
+            class : this.props.location.state.user.class,
+            room : this.props.location.state.user.room,
+            weapon : this.props.location.state.user.weapon,
+        })
+    }
+
+    handleClassSelect(choice, weapon) {
+        this.setState({
+            class : choice,
+            weapon : weapon
+        })
     }
 
 
     render() {
+        if (this.state.class === null) {
+            return (
+                <ReactModal isOpen={true} ariaHideApp={false}>
+                    <Class select={this.handleClassSelect} />
+                </ReactModal>
+            )
+        }
         return(
             <div>
                 <div id="main">
-                    <ReactModal isOpen={false}>
 
-                    </ReactModal>
                     <div id="explore-container">
                         <div id="current-floor">
-                            THIS IS THE CURRENT FLOOR DIV
+                            YOU CURRENT HAVE {this.state.room} WINS
                         </div>
                         <div id="explore"></div>
                     </div>
@@ -54,14 +80,14 @@ class App extends React.Component {
                                 Icon
                             </div>
                             <div id="name-plate">
-                                USERNAME
+                                {this.state.name}
                             </div>
                         </div>
                         <div id="class-image">
                             CLASSIMAGEHERE
                         </div>
                         <div id="next-boss">
-                            NEXT BOSS IN n FLOORS
+                            NEXT BOSS IN n WINS
                         </div>
                     </div>
                 </div>

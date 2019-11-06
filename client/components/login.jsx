@@ -1,8 +1,56 @@
 import React from 'react'
 import axios from 'axios'
+import ReactModal from 'react-modal'
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { sha512 } from '../../server/hashing.js'
 
-const Login = () => {
+class Login extends React.Component {
+  constructor (props) {
+  super(props)
+    this.state = {
+      loggedIn : false,
+      user : null
+    }
+    this.handleLogIn.bind(this);
+  }
+
+  handleLogIn(name, pass) {
+    axios.get(`/login?user=${name}`)
+    .then(function (salt) {
+      let hashed = sha512(pass, salt.data)
+      hashed.user = name;
+      console.log(this)
+      return axios.get(`/loginconfirm?user=${hashed.user}&pass=${hashed.psw}`)
+    })
+    .then(this.loginPart2.bind(this))
+    // .then(function(user){
+    //   this.setState({
+    //     loggedIn: true,
+    //     user: user.data
+    //   })
+    //   console.log(user.data)
+    // })
+    .catch(function (error) {
+      console.log(error);
+    })
+  }
+
+  loginPart2(user) {
+      this.setState({
+        loggedIn: true,
+        user: user.data
+      })
+  }
+
+  render(){
+    if (this.state.loggedIn === true) {
+      return <Redirect to={{
+        pathname: '/play',
+        state: { user: this.state.user }
+        }}
+        />
+    }
     return(
         <div>
             <div id='text-Modal'>
@@ -20,28 +68,16 @@ const Login = () => {
                     <input type="submit" value="Submit" onClick={(e) => {
                         let name = document.getElementById("username").value;
                         let pass = document.getElementById("psw").value;
-                        axios.get(`/login?user=${name}`)
-                        .then(function (salt) {
-                          // handle success
-                          let hashed = sha512(pass, salt)
-                          hashed.user = name;
-                          axios.get(`/loginconfirm?info=${hashed}`)
-                        })
-                        .catch(function (error) {
-                          // handle error
-                          console.log(error);
-                        })
-                        .finally(function () {
-                          // always executed
-                        });
-                        
-                        e.preventDefault();}}/>
+                        e.preventDefault();
+                        this.handleLogIn(name, pass)
+                        }}/>
                 </form>
                 <p>Not a gladiator yet?</p>
             </div>
+            
         </div>
-
     )
+  }
 }
 
 export default Login;

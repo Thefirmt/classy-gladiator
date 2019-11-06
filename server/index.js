@@ -18,26 +18,29 @@ app.get('/login', (req, res) => {
 })
 
 app.get('/loginconfirm', (req, res) => {
-    let psw = [req.query.info.psw]
-    let salt = [req.query.info.salt]
-    let username = [req.query.info.user]
-    console.log(username)
+    let psw = req.query.pass
+    let username = [req.query.user]
     let text = "SELECT * FROM users WHERE name = $1"
     pool.query(text, username)
     .then(function (data2) {
-        console.log(data2)
-        // res.send(res.rows[0].salt)
+        if (data2.rows[0].pass === psw) {
+          console.log('User: ', data2.rows[0].name, ' Authentication Success!')
+          let userInfo = {
+            'name': data2.rows[0].name,
+            'class': data2.rows[0].class,
+            'weapon': data2.rows[0].weapon,
+            'armor': data2.rows[0].armor,
+            'room': data2.rows[0].room
+          }
+          res.status(200).send(userInfo)
+        } else {
+          res.status(400).send('Incorrect password')
+        }
     })
     .catch(e => console.log(e.stack))
 })
 
 //check for duplicate usernames
-// app.get('/register', (req, res) => {
-//     let username = req.body.name
-//     pool.query(`SELECT * FROM users WHERE name = ${username}`)    
-//       .then(res => res.send(res))
-//       .catch(e => console.log(e.stack))
-// })
 
 app.post('/register', (req, res) => {
     let username = req.body.user;
@@ -61,28 +64,7 @@ app.post('/register', (req, res) => {
       res.send('Account Created!')
 })
 
-//receive username from client
-//Get username salt from database
-//send salt to client
-//client runs salt and hash on user typed password
-//send the hashed password to server
-//check against the saved password in the database for user.
-//if it matches, retrieve data for user.
-
-
-
-//Get User hashpassword and salt
-//Call the sha512 function on user input password with the saved salt from the database.
-//Compare the result to the user saved hashed password, if it matches, log in. -->User = Usernumber, Get all the data for user.
-
-
-// saltHashPassword('MYPASSWORD');
-// saltHashPassword('MYPASSWORD');
-
 app.use(express.static('public'))
-
-// const res = await pool.query('SELECT NOW()')
-// await pool.end()
 
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`))
