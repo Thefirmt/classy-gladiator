@@ -1,8 +1,37 @@
 import React from 'react'
+import Axios from 'axios'
 
-const Class = (props) => {
-    return(
-        <div>
+class ClassSelect extends React.Component (props){
+    constructor(props) {
+        super(props)
+
+        this.state= {
+            class: 1,
+            weapon: 1
+        }
+
+        this.classes = [];
+        this.weapons = []
+    }
+
+    getStarterClasses() {
+        Axios.get('/starterClasses')
+        .then(function(classes) {
+            this.classes = classes.data
+        })
+    }
+
+
+    getStarterWeapons() {
+        Axios.get('/starterWeapons')
+        .then(function(weapons) {
+            this.weapons = weapons.data
+        })
+    }
+
+    render() {
+        
+        <div id="char-modal">
             <div id="class-header">
                 <div id="choose-your-class">
                     CHOOSE YOUR CLASS
@@ -21,9 +50,9 @@ const Class = (props) => {
             <div id="weapon-name">
                 Weapon Name
             </div>
-            <button type="submit" onClick={(e)=>{props.select(2, 2)}} />
+            <button type="submit" onClick={(e)=>{props.select(this.state.class, this.state.weapon)}} />
         </div>
-    )
+    }
 }
 
 export default Class;

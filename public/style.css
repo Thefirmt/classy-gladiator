@@ -67,3 +67,17 @@ body {
     color: darkred;
     font-size: 12px;
 }
+.Modal, #char-modal {
+    display: grid;
+    align-content: center;
+    text-align: center;
+}
+
+.Modal, #image {
+    display: inline-block;
+    width: 500px;
+    height: 500px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    background: gray;
+}

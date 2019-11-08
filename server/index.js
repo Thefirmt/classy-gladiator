@@ -64,6 +64,28 @@ app.post('/register', (req, res) => {
       res.send('Account Created!')
 })
 
+
+
+app.get('/starterClasses', (req, res) => {
+  let starterClasses = [8]
+  let text = "SELECT * FROM classes WHERE id <= $1"
+  pool.query(text, starterClasses)
+  .then(function (classes){
+  res.status(200).send(classes)
+  })
+})
+
+
+
+app.get('/starterWeapons', (req, res) => {
+  let starterWeapons = [8]
+  let text = "SELECT * FROM weapons WHERE id <= $1"
+  pool.query(text, starterWeapons)
+  .then(function (weapons){
+    res.status(200).send(weapons)
+  })
+})
+
 app.use(express.static('public'))
 
 
