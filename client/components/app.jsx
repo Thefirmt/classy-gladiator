@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactModal from 'react-modal'
-import Class from './classesSelect.jsx'
+import ClassSelect from './classesSelect.jsx'
 // import Background from './background.jsx'
 
 class App extends React.Component {
@@ -36,7 +36,9 @@ class App extends React.Component {
     }
 
 
-    //SET UNMOUNT or selected classes will always be overwritten on state updates.
+    //SET UNMOUNT or selected classes will always be overwritten on routing back to this app
+    //Might make the fight module a little complicated
+    //Just save changes to DB on character creation and reload them from there.
     componentDidMount() {
         // this.changeBg();
         this.setState({
@@ -60,7 +62,7 @@ class App extends React.Component {
         if (this.state.class === null) {
             return (
                 <ReactModal isOpen={true} ariaHideApp={false}>
-                    <Class select={this.handleClassSelect} />
+                    <ClassSelect select={this.handleClassSelect} />
                 </ReactModal>
             )
         }
