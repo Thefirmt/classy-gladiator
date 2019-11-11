@@ -8,11 +8,12 @@ class ClassSelect extends React.Component{
 
         this.state= {
             class: null,
-            weapon: null
+            weapon: null,
         }
 
         this.classes = [];
         this.weapons = [];
+        this.current = 0
     }
 
     //get starter Classes from DB
@@ -39,6 +40,23 @@ class ClassSelect extends React.Component{
         });
     }
 
+    goLeft() {
+        this.current-= 1;
+        this.setState({
+            class: this.classes[current],
+            weapon: this.weapons[current]
+        });
+    }
+
+    goRight() {
+        this.current+= 1;
+        this.setState({
+            class: this.classes[current],
+            weapon: this.weapons[current]
+        });
+    }
+
+
     componentDidMount() {
         this.getStarterClasses();
         this.getStarterWeapons();
@@ -56,11 +74,11 @@ class ClassSelect extends React.Component{
                     </div>
                 </div>
                 <div id="class-carousel">
-                    <div id="class-arrow-left"></div>
+                    <div id="class-arrow-left">(</div>
                     <div id="image">
                         CLASS IMAGE
                     </div>
-                    <div id="class-arrow-right"></div>
+                    <div id="class-arrow-right">)</div>
                 </div>
                 <div id="weapon-name">
                     WEAPON NAME
