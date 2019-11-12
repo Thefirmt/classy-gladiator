@@ -18,8 +18,7 @@ reactDOM.render(
                 <Route exact path="/" render={() => (
                     <div>
                         <ReactModal isOpen={true} ariaHideApp={false}>
-                            {/* <Login /> */}
-                            <ClassSelect />
+                            <Login />
                             <Link to={'/register'}>Sign up</Link>
                             <Link to={`/play`}>Play</Link>
                         </ReactModal>

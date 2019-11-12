@@ -62,7 +62,7 @@ class App extends React.Component {
         if (this.state.class === null) {
             return (
                 <ReactModal isOpen={true} ariaHideApp={false}>
-                    <ClassSelect select={this.handleClassSelect} />
+                    <ClassSelect user={this.state.name} />
                 </ReactModal>
             )
         }

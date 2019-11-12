@@ -1,6 +1,6 @@
 import React from 'react'
 
-const classCarousel = (props) => {
+const classNameCarousel = (props) => {
     return (
         <div>
             <h1>{props.class.name}</h1>
@@ -8,4 +8,4 @@ const classCarousel = (props) => {
     )
 }
 
-export default classCarousel;
+export default classNameCarousel;

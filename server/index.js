@@ -64,7 +64,25 @@ app.post('/register', (req, res) => {
       res.send('Account Created!')
 })
 
-
+app.post('/classSelected', (req, res) => {
+  // let username = req.body.user;
+  ;(async () => {
+      const client = await pool.connect()
+      try {
+        await client.query('BEGIN')
+        const starterQuery = "INSERT INTO users WHERE name = $1 (class, weapon) VALUES ($2, $3)"
+        const insertStarter = [req.body.name, req.body.class, req.body.weapon]
+        await client.query(starterQuery, insertStarter)
+        await client.query('COMMIT')
+      } catch (e) {
+        await client.query('ROLLBACK')
+        throw e
+      } finally {
+        client.release()
+      }
+    })().catch(e => console.error(e.stack))
+    res.send('Class Selected!')
+})
 
 app.get('/starterClasses', (req, res) => {
   let starterClasses = [8]

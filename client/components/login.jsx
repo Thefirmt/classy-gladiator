@@ -24,13 +24,6 @@ class Login extends React.Component {
       return axios.get(`/loginconfirm?user=${hashed.user}&pass=${hashed.psw}`)
     })
     .then(this.loginPart2.bind(this))
-    // .then(function(user){
-    //   this.setState({
-    //     loggedIn: true,
-    //     user: user.data
-    //   })
-    //   console.log(user.data)
-    // })
     .catch(function (error) {
       console.log(error);
     })
