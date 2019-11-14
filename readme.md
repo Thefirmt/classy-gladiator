@@ -154,7 +154,7 @@ Magician -> Illusionist || Fortune Teller
 Singer -> Idol || Rock Star
 Thespian -> Kabuki || Enchantress
 
-### Marksmen
+### Marksman
 
 Eagle Eye: Gain a bonus to accuracy.
 
