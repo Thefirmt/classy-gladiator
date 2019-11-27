@@ -50,7 +50,7 @@ class App extends React.Component {
         })
     }
 
-    handleClassSelect(choice, weapon) {
+    handleClassSelect(completed) {
         this.setState({
             class : choice,
             weapon : weapon
@@ -62,7 +62,7 @@ class App extends React.Component {
         if (this.state.class === null) {
             return (
                 <ReactModal isOpen={true} ariaHideApp={false}>
-                    <ClassSelect user={this.state.name} />
+                    <ClassSelect user={this.state} />
                 </ReactModal>
             )
         }

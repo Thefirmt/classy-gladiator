@@ -12,7 +12,7 @@ class Login extends React.Component {
       loggedIn : false,
       user : null
     }
-    this.handleLogIn.bind(this);
+    this.handleLogIn = this.handleLogIn.bind(this);
   }
 
   handleLogIn(name, pass) {

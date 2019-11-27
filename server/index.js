@@ -65,12 +65,11 @@ app.post('/register', (req, res) => {
 })
 
 app.post('/classSelected', (req, res) => {
-  // let username = req.body.user;
   ;(async () => {
       const client = await pool.connect()
       try {
         await client.query('BEGIN')
-        const starterQuery = "INSERT INTO users WHERE name = $1 (class, weapon) VALUES ($2, $3)"
+        const starterQuery = "UPDATE users SET class = $2, weapon = $3 WHERE name = $1"
         const insertStarter = [req.body.name, req.body.class, req.body.weapon]
         await client.query(starterQuery, insertStarter)
         await client.query('COMMIT')

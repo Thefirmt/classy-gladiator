@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 import ClassNameCarousel from './classNameCarousel.jsx'
 import WeaponNameCarousel from './weapNameCarousel.jsx'
 
@@ -10,6 +11,13 @@ class ClassSelect extends React.Component{
         this.state= {
             class: null,
             weapon: null,
+            user: { 
+                name : this.props.user.name,
+                armor : this.props.user.armor,
+                class : null,
+                room : this.props.user.room,
+                weapon : null },
+            finished: false
         }
 
         this.classes = [];
@@ -84,18 +92,34 @@ class ClassSelect extends React.Component{
     }
 
     postChoice() {
-        console.log(this.props)
         axios.post('classSelected', {
-            name: this.props.user,
+            name: this.props.user.name,
             class: this.state.class.id,
             weapon: this.state.weapon.id
         })
-        .then(function(response) {
-            console.log(response)
+        .then(this.finishClassSelect.bind(this))
+        .catch(function (error) {
+            console.log(error);
+          })
+    }
+
+    finishClassSelect() {
+        this.setState({
+          finished: true,
         })
     }
 
     render() {
+        if (this.state.finished === true) {
+            this.setState({
+                user: {class: this.state.class, weapon: this.state.weapon}
+            })
+            return <Redirect to={{
+              pathname: '/play',
+              state: { user: this.state.user }
+              }}
+              />
+            }
         return(
             <div className="char-modal">
                     <div className="class-header">

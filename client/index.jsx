@@ -20,7 +20,7 @@ reactDOM.render(
                         <ReactModal isOpen={true} ariaHideApp={false}>
                             <Login />
                             <Link to={'/register'}>Sign up</Link>
-                            <Link to={`/play`}>Play</Link>
+                            {/* <Link to={`/play`}>Play</Link> */}
                         </ReactModal>
                     </div>
                 )} />
