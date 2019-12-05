@@ -69,7 +69,6 @@ class App extends React.Component {
                 </ReactModal>
             )
         }
-        console.log(this.state)
         return(
             <div>
                 <div id="main">
