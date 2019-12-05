@@ -50,10 +50,13 @@ class App extends React.Component {
         })
     }
 
-    handleClassSelect(completed) {
+    handleClassSelect(user, classChoice, weaponChoice) {
         this.setState({
-            class : choice,
-            weapon : weapon
+            name : user.name,
+            armor : user.armor,
+            class : classChoice,
+            room : user.room,
+            weapon : weaponChoice 
         })
     }
 
@@ -62,10 +65,11 @@ class App extends React.Component {
         if (this.state.class === null) {
             return (
                 <ReactModal isOpen={true} ariaHideApp={false}>
-                    <ClassSelect user={this.state} />
+                    <ClassSelect handleClassSelect={this.handleClassSelect} user={this.state} />
                 </ReactModal>
             )
         }
+        console.log(this.state)
         return(
             <div>
                 <div id="main">
@@ -79,14 +83,14 @@ class App extends React.Component {
                     <div id="background">
                         <div id="name-container">
                             <div id="class-icon">
-                                Icon
+                                ICON
                             </div>
                             <div id="name-plate">
                                 {this.state.name}
                             </div>
                         </div>
                         <div id="class-image">
-                            CLASSIMAGEHERE
+                            IMAGE FOR CLASS
                         </div>
                         <div id="next-boss">
                             NEXT BOSS IN n WINS

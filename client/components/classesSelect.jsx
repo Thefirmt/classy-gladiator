@@ -17,7 +17,6 @@ class ClassSelect extends React.Component{
                 class : null,
                 room : this.props.user.room,
                 weapon : null },
-            finished: false
         }
 
         this.classes = [];
@@ -97,29 +96,13 @@ class ClassSelect extends React.Component{
             class: this.state.class.id,
             weapon: this.state.weapon.id
         })
-        .then(this.finishClassSelect.bind(this))
+        .then(this.props.handleClassSelect(this.state.user, this.state.class.id, this.state.weapon.id))
         .catch(function (error) {
             console.log(error);
           })
     }
-
-    finishClassSelect() {
-        this.setState({
-          finished: true,
-        })
-    }
-
+    
     render() {
-        if (this.state.finished === true) {
-            this.setState({
-                user: {class: this.state.class, weapon: this.state.weapon}
-            })
-            return <Redirect to={{
-              pathname: '/play',
-              state: { user: this.state.user }
-              }}
-              />
-            }
         return(
             <div className="char-modal">
                     <div className="class-header">
