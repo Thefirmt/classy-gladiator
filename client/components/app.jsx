@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactModal from 'react-modal'
 import ClassSelect from './classesSelect.jsx'
+import Battle from './battle.jsx'
 // import Background from './background.jsx'
 
 class App extends React.Component {
@@ -13,9 +14,11 @@ class App extends React.Component {
             room : 1,
             weapon : null,
             bgImage: 0,
+            battle: false
         }
 
         this.handleClassSelect = this.handleClassSelect.bind(this)
+        this.startBattle = this.startBattle.bind(this)
     }
 
     //intial backgorund changing idea. Call this function after every floor to check for new background.
@@ -60,6 +63,11 @@ class App extends React.Component {
         })
     }
 
+    startBattle() {
+        this.setState({
+            battle: true
+        })
+    }
 
     render() {
         if (this.state.class === null) {
@@ -69,15 +77,23 @@ class App extends React.Component {
                 </ReactModal>
             )
         }
+        if (this.state.battle === true) {
+            return (
+                <ReactModal isOpen={true} ariaHideApp={false}>
+                    <Battle user={this.state}/>
+                </ReactModal>
+
+            )
+        }
         return(
             <div>
                 <div id="main">
 
                     <div id="explore-container">
                         <div id="current-floor">
-                            YOU CURRENT HAVE {this.state.room} WINS
+                            YOU CURRENTLY HAVE {this.state.room} WINS
                         </div>
-                        <div id="explore"></div>
+                        <div id="explore"><button id="explore" onClick={this.startBattle}></button></div>
                     </div>
                     <div id="background">
                         <div id="name-container">
