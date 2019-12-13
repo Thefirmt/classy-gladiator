@@ -74,7 +74,19 @@ class Battle extends React.Component {
         });
     }
 
-
+    //write a function that rolls stats for weapon for each rarity
+    //write a function that rolls stats for armor for each rarity
+    //roll random weapon and armor and class stats for enemy
+    //send user weapon and armor and class stats to display
+    //send enemy stats to display
+    //use intervals to display attacks from user and enemy.
+    //if user wins, display the stats of the weapon and the users weapon
+        //ask user if they would like to keep weapon?
+            //save new weapon to database for user and send player back to main screen
+    //if user loses, tell user they have died
+        //wipe all data from users account including starting class and weapon
+        //send user to log in screen?
+    
     componentDidMount() {
         // this.getStarterClasses();
         // this.getStarterWeapons();
@@ -99,18 +111,20 @@ class Battle extends React.Component {
                 <div className="battle-header">
                     YOU'VE ENCOUNTERED [enemy]
                 </div>
-                <div id="battle-stats">
+                <div id="battle-arena"></div>
+                <div id="battle-strengths">
                     Strength Comparison
-                { this.state.class !== null ? <DisplayStats class={this.state.class} /> : 'Loading..' }
+                </div>
+                <div id="battle-enemy-stats">
                 { this.state.class !== null ? <DisplayStats class={this.state.class} /> : 'Loading..' }
                 </div>
-                <div id="image">
-                    BATTLE ARENA
+                <div id="battle-user-stats">
+                { this.state.class !== null ? <DisplayStats class={this.state.class} /> : 'Loading..' }
                 </div>
-                <button id="button-accept" type="submit" onClick={(e)=>{
+                <button id="battle-fight" type="submit" onClick={(e)=>{
                     this.postChoice()
                     }}>FIGHT!</button>
-                <button id="button-accept" type="submit" onClick={(e)=>{
+                <button id="battle-run" type="submit" onClick={(e)=>{
                     this.postChoice()
                     }}>RUN!</button>
             </div>

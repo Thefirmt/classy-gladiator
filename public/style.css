@@ -68,6 +68,74 @@ body {
     font-size: 12px;
 }
 
+.Modal, .battle-modal {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(50px, auto);
+    grid-template-areas: 
+    ". header header header header ."
+    ". arena arena arena statsheader statsheader"
+    ". arena arena arena enemystats enemystats"
+    ". arena arena arena enemystats enemystats"
+    ". arena arena arena userstats userstats"
+    ". arena arena arena userstats userstats"
+    ". arena arena arena . ."
+    "fight fight fight run run run";
+    align-items: center;
+    justify-items: center;
+    color: gray;
+}
+
+.Modal, .battle-header {
+    grid-area: header;
+}
+
+.Modal, #battle-strengths {
+    grid-area: statsheader;
+}
+
+.Modal, #battle-arena {
+    grid-area: arena;
+    background: rgb(255, 196, 129);
+    height: 500px;
+    width: 500px;
+    border-radius: 5%;
+}
+
+.Modal, #battle-enemy-stats {
+    color: purple;
+    grid-area: enemystats;
+}
+
+.Modal, #battle-user-stats {
+    color: royalblue;
+    grid-area: userstats;
+}
+
+.Modal, #battle-fight {
+    grid-area: fight;
+    color: white;
+    background-color: royalblue;
+    height: 75px;
+    width: 300px;
+    border-radius: 20%;
+    font-size: 125%;
+    border: none;
+}
+
+.Modal, #battle-run {
+    grid-area: run;
+    color: white;
+    background-color: orangered;
+    height: 75px;
+    width: 300px;
+    border-radius: 20%;
+    font-size: 125%;
+    border: none;
+}
+
+
+
 .Modal, .char-modal {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
