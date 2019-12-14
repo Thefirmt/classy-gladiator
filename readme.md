@@ -1,11 +1,5 @@
 # Classes for Classy Gladiator
 
-// Maid
-// Currency
-// Weapon & Armor Shop
-// Rogue-like. Permanent Death. Run away from fights.
-// RNG generate weapons. If chosen then insert in database and add to user.
-
 ### Female
 Healer
 Cleric
@@ -176,7 +170,7 @@ Spear tosser
 
 Gunslinger -> Musketeer || Sniper
 Archer -> Vampire Hunter || Bow Knight
-Trainee -> Hooligan || Seige Engineer
+Academician -> Drop-Out || Seige Engineer
 
 ### Mercenary
 
@@ -301,3 +295,9 @@ Evasion chance to avoid all damage
 Accuracy reduces enemy `Evasion` chance by flat percentage
 M Def reduces the amount of damage taken from `Magical` attacks by a flat amount
 P Def reduces the amount of damage taken from `Physical` attacks by a flat amount
+
+// Maid Class?
+// Currency
+// Weapon & Armor Shop
+// Rogue-like. Permanent Death. Run away from fights.
+// RNG generated weapons and armor.
